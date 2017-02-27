@@ -1,0 +1,61 @@
+body{
+    font-family: "Arial",Helvetica,Arial,sans-serif; 
+    background:#000;
+}
+.scrollable{margin:20px;}
+.panel{
+    background:#333; 
+    color:#e2e2e2
+}
+.panel-default>.panel-heading{
+    background-color: #ffcb39; 
+    color:#333
+}
+.panel-default {border-color: #333;}
+.glyphicon-pencil{
+    padding:0px 10px; 
+    color: #999;
+}
+.media-body .input-group{width:250px}
+.media-body input{
+    background: #949090;
+    color: #fff;
+    border: none;
+}
+.modal-content {
+    background-color: #333;
+    color: #f0f0f0;
+}
+.modal-header {
+    border-bottom: 1px solid #795d34;
+}
+.modal-footer {
+    border-bottom: 1px solid #795d34;
+}
+.btn.cancel{
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+
+@media (max-width: 480px) { 
+    .media-body, .media-left, .media-right {
+        display: table-row;
+        padding: 5px 0px;
+        display: block;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .media-body, .media-left, .media-right {
+        display: table-row;
+        padding: 5px 0px;
+        display: block;
+    }
+}
+
+@media (min-width: 992px) {
+    .panel-body .media-body:nth-child(3) {
+        padding: 0px 10px;
+    }
+}

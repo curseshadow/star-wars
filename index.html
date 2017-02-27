@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>STAR WARS</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="dist/css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="dist/js/angular.min.js"></script>
+    <script src="dist/js/bootstrap.js"></script>
+    <script src="dist/js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="dist/js/all.js"></script>
+  </head>
+
+  <body ng-app="AngularUiExamples" ng-controller="MainController">
+
+    <div class="scrollable">
+      <div class="scrollable-content">
+        <div class="section">
+          <div class="panel-group">
+              
+          <uib-accordion close-others="oneAtATime">
+            <div uib-accordion-group class="panel-default" is-open="status.open" ng-repeat="x in data | orderBy : '-crew'">
+              <uib-accordion-heading ng-click="status.open = !status.open">
+                {{x.name}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+              </uib-accordion-heading>
+              <div class="media-body">
+                <h4 class="media-heading">Model</h4>
+                {{x.model}}
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">Manufacturer</h4>
+                {{x.manufacturer}}
+              </div>
+              <div class="media-body" ng-click="editthis[x.id] = true" ng-hide="editthis[x.id]">
+                <h4 class="media-heading">Crew</h4>
+                {{x.crew}}<i class="glyphicon-pencil glyphicon"></i>
+              </div>
+              <div class="media-body" ng-if="editthis[x.id]">
+                <h4 class="media-heading">Crew</h4>
+                <div class="input-group">
+                  <input type="text" class="form-control" name="crew" ng-model="crew[x.id]" ng-init="crew[x.id] = [x.crew]" placeholder="Please insert value">
+                  <div class="input-group-btn">
+                    <!-- Buttons -->
+                    <button type="button" class="btn btn-default" ng-click="openModal(x.id)">Update</button>
+                    <button type="button" class="btn btn-default cancel" ng-click="editthis[x.id] = false">Cancel</button>
+                  </div>
+                </div>  
+                
+                
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">Last Edited</h4>
+                {{x.edited | date:'dd/MM/yyyy'}}
+              </div>
+            </div>
+          </uib-accordion>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">Are you sure you want to update this?</h3>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="updatestarship()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+    
+  </body>
+</html>
