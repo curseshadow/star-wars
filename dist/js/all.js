@@ -9,8 +9,8 @@ app.controller('MainController', function($scope, $http, $uibModal, $log, $docum
         
     $http.get('https://swapi.co/api/starships/').
      then(function(response) {
-           $scope.data = [];
            $scope.data = response;
+           $scope.data.results = [];
            var jsonlength = $scope.data.results.length; 
            var jsonObjArray = []; // = new Array();
         
