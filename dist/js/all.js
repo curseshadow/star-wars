@@ -6,7 +6,7 @@ app.controller('MainController', function($scope, $http, $uibModal, $log, $docum
     
     //if localstorage empty or null
 	if (localStorage.getItem('starwarsdata') == null) {
-    $http.get('http://swapi.co/api/starships/').
+    $http.get('https://swapi.co/api/starships/').
      success(function(response) {
            $scope.data = response;
            var jsonlength = $scope.data.results.length; 
