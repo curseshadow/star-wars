@@ -10,17 +10,16 @@ app.controller('MainController', function($scope, $http, $uibModal, $log, $docum
     $http.get('https://swapi.co/api/starships/').
      then(function(response) {
            $scope.data = response;
-           $scope.data.results = [];
-           var jsonlength = $scope.data.results.length; 
+           var jsonlength = $scope.data.data.results.length; 
            var jsonObjArray = []; // = new Array();
         
            for (i=0; i<jsonlength; i++){
                for (k=0; k<starshipsID.length; k++){
                    var url = 'http://swapi.co/api/starships/'+ starshipsID[k] + '/';
-                   if($scope.data.results[i].url == url){
+                   if($scope.data.data.results[i].url == url){
                     //alert(JSON.stringify($scope.data.results[i]));
-                    $scope.data.results[i].id =  starshipsID[k];
-                    jsonObjArray.push($scope.data.results[i]);
+                    $scope.data.data.results[i].id =  starshipsID[k];
+                    jsonObjArray.push($scope.data.data.results[i]);
                     localStorage.setItem('starwarsdata', JSON.stringify(jsonObjArray));
                     
                    }
