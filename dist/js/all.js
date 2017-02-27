@@ -6,8 +6,9 @@ app.controller('MainController', function($scope, $http, $uibModal, $log, $docum
     
     //if localstorage empty or null
 	if (localStorage.getItem('starwarsdata') == null) {
+        
     $http.get('https://swapi.co/api/starships/').
-     success(function(response) {
+     then(function(response) {
            $scope.data = response;
            var jsonlength = $scope.data.results.length; 
            var jsonObjArray = []; // = new Array();
